@@ -146,10 +146,10 @@ const interview=list.filter(c=>['Đã hẹn','PV1','PV2'].includes(c.stage)).len
 const offer=list.filter(c=>c.stage==='Đã nhận việc').length;
 const hired=list.filter(c=>['Đã nhận việc','Đã tuyển'].includes(c.stage)).length;
 document.getElementById('kpi').innerHTML=`
-<div class="card"><div class="label">Tổng ứng viên</div><div class="value">${total}</div><div class="small">Ứng viên mới hôm nay: ${newToday}</div></div>
-<div class="card"><div class="label">Đang phỏng vấn</div><div class="value">${interview}</div><div class="small">Phỏng vấn vòng 1 + vòng 2</div></div>
-<div class="card"><div class="label">Đã nhận việc</div><div class="value">${offer}</div><div class="small">Ứng viên đã nhận việc</div></div>
-<div class="card"><div class="label">Tuyển thành công</div><div class="value">${hired}</div><div class="small">Đã nhận việc</div></div>
+<div class="card"><div class="label">Tổng ứng viên</div><div class="value">${total}</div></div>
+<div class="card"><div class="label">Đang phỏng vấn</div><div class="value">${interview}</div></div>
+<div class="card"><div class="label">Đã nhận việc</div><div class="value">${offer}</div></div>
+<div class="card"><div class="label">Tuyển thành công</div><div class="value">${hired}</div></div>
 `;
 }
 function renderDemand(){
