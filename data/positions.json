@@ -10,6 +10,11 @@
     "level": "Management"
   },
   {
+    "position_id": "PG",
+    "position_name": "PG",
+    "level": "Management"
+  },
+  {
     "position_id": "LT",
     "position_name": "Lễ tân",
     "level": "Front Office"

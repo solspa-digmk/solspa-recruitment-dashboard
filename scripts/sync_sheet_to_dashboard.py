@@ -32,7 +32,7 @@ SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 SHEET_ID = '1hs0gjgwjeUHJUK1qm5J9fuB4K4H1EIaFRhjyNLal7FE'
 TAB_NAME = 'Candidate_Input'
 
-POSITIONS = {'PGD', 'QLCN', 'LT', 'BS', 'TLV'}
+POSITIONS = {'PGD', 'QLCN', 'PG', 'LT', 'BS', 'TLV'}
 BRANCHES = {'Q7', 'LCP', 'LCR', 'RNS', 'MVT', 'MBC', 'LR', 'HM', 'DL'}
 STAGES = {
     'Mới', 'Sàng lọc', 'Phân chi nhánh', 'Đã liên hệ', 'Đã hẹn',
