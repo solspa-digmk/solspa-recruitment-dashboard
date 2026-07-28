@@ -145,13 +145,11 @@ const newToday=list.filter(c=>c.created_at==='2026-07-28').length;
 const interview=list.filter(c=>['Đã hẹn','PV1','PV2'].includes(c.stage)).length;
 const offer=list.filter(c=>c.stage==='Đã nhận việc').length;
 const hired=list.filter(c=>['Đã nhận việc','Đã tuyển'].includes(c.stage)).length;
-const avgDays= total ? Math.round((new Date() - new Date(list[0].created_at))/86400000/total) : 0;
 document.getElementById('kpi').innerHTML=`
 <div class="card"><div class="label">Tổng ứng viên</div><div class="value">${total}</div><div class="small">Ứng viên mới hôm nay: ${newToday}</div></div>
 <div class="card"><div class="label">Đang phỏng vấn</div><div class="value">${interview}</div><div class="small">Phỏng vấn vòng 1 + vòng 2</div></div>
 <div class="card"><div class="label">Đã nhận việc</div><div class="value">${offer}</div><div class="small">Ứng viên đã nhận việc</div></div>
 <div class="card"><div class="label">Tuyển thành công</div><div class="value">${hired}</div><div class="small">Đã nhận việc</div></div>
-<div class="card"><div class="label">Thời gian trung bình</div><div class="value">${avgDays}<span style="font-size:14px;color:var(--muted)"> ngày</span></div><div class="small">Trong pipeline</div></div>
 `;
 }
 function renderDemand(){
