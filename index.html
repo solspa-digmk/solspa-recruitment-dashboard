@@ -80,7 +80,7 @@ a{color:var(--blue);font-weight:800}
 <div class="tablewrap">
 <table id="demandTable">
 <thead>
-<tr><th>Chi nhánh</th><th>Vị trí</th><th>Cần tuyển</th><th>Đang phỏng vấn</th><th>Thử việc</th><th>Đã nhận việc</th><th>Tuyển thành công</th><th>Thiếu</th></tr>
+<tr><th>Chi nhánh</th><th>Vị trí</th><th>Cần tuyển</th><th>Độ ưu tiên</th><th>Tuyển thành công</th><th>Thiếu</th></tr>
 </thead>
 <tbody></tbody>
 </table>
@@ -109,7 +109,7 @@ const branches=[{"branch_id": "Q7", "branch_name": "Phòng khám Q7", "branch_ty
 const positions=[{"position_id": "PGD", "position_name": "Phó Giám Đốc", "level": "Executive"}, {"position_id": "QLCN", "position_name": "Quản lý/Phó Quản lý chi nhánh", "level": "Management"}, {"position_id": "PG", "position_name": "PG", "level": "Management"}, {"position_id": "LT", "position_name": "Lễ tân", "level": "Front Office"}, {"position_id": "BS", "position_name": "Bác sĩ/Y sĩ", "level": "Medical"}, {"position_id": "TLV", "position_name": "Trị liệu viên", "level": "Service"}];
 const stages=["Mới", "Sàng lọc", "Phân chi nhánh", "Đã liên hệ", "Đã hẹn", "PV1", "PV2", "Thử việc", "Từ chối", "Đã nhận việc", "Nhóm tiềm năng", "Danh sách đen"];
 const candidates=[{"candidate_id": "C001", "created_at": "2026-07-28", "updated_at": "2026-07-28", "full_name": "Phạm Khánh Hà", "phone": "0703835789", "email": "phamkhanh9123@gmail.com", "zalo": "0703835789", "position_applied": "LT", "preferred_branch": "LCP", "assigned_branch": "LCP", "branch_flexibility": false, "region_preference": "", "source": "Giới thiệu", "cv_link": "", "experience_years": 0, "current_company": "", "expected_salary": 0, "available_date": "", "english_level": "", "license_status": "", "stage": "Đã liên hệ", "status": "active", "owner": "Giang l", "next_action": "Trao đổi tiếp", "next_follow_up_date": "", "interview_date": "", "interviewer": "", "screening_score": 0, "interview_score": 0, "trial_score": 0, "final_score": 0, "decision": "", "offer_salary": "", "onboard_date": "", "notes": ""}, {"candidate_id": "C002", "created_at": "2026-07-28", "updated_at": "2026-07-28", "full_name": "Nguyễn Thị Mai Linh", "phone": "0799236179", "email": "mailinhnguyenthi2456@gmail.com", "zalo": "0799236179", "position_applied": "PG", "preferred_branch": "LCP", "assigned_branch": "LCP", "branch_flexibility": false, "region_preference": "", "source": "Giới thiệu", "cv_link": "", "experience_years": 0, "current_company": "", "expected_salary": 0, "available_date": "", "english_level": "", "license_status": "", "stage": "Đã liên hệ", "status": "active", "owner": "Giang l", "next_action": "Trao đổi hẹn lại 10.8", "next_follow_up_date": "", "interview_date": "", "interviewer": "", "screening_score": 0, "interview_score": 0, "trial_score": 0, "final_score": 0, "decision": "", "offer_salary": "", "onboard_date": "", "notes": ""}];
-const demandList=[];
+const demandList=[{"demand_id": "D001", "branch_id": "LCP", "position_id": "QLCN", "open_headcount": 1, "priority": "Cao", "hired_count": 0, "shortage": 1, "target_start_date": "2025-08-01", "status": "Đang mở", "requested_by": "Giang", "notes": "Can 1 QLCN"}, {"demand_id": "D002", "branch_id": "LCP", "position_id": "LT", "open_headcount": 1, "priority": "Cao", "hired_count": 0, "shortage": 1, "target_start_date": "2025-08-01", "status": "Đang mở", "requested_by": "Giang", "notes": "Bo sung ca chieu"}, {"demand_id": "D003", "branch_id": "LCR", "position_id": "LT", "open_headcount": 1, "priority": "Cao", "hired_count": 0, "shortage": 1, "target_start_date": "2025-08-01", "status": "Đang mở", "requested_by": "Giang", "notes": "Thay the QL"}, {"demand_id": "D004", "branch_id": "RNS", "position_id": "QLCN", "open_headcount": 1, "priority": "Cao", "hired_count": 0, "shortage": 1, "target_start_date": "2025-08-01", "status": "Đang mở", "requested_by": "Giang", "notes": "Mua cao diem"}, {"demand_id": "D005", "branch_id": "RNS", "position_id": "LT", "open_headcount": 1, "priority": "Trung bình", "hired_count": 0, "shortage": 1, "target_start_date": "2025-08-01", "status": "Đang mở", "requested_by": "Giang", "notes": "Resort"}, {"demand_id": "D006", "branch_id": "Q7", "position_id": "LT", "open_headcount": 1, "priority": "Cao", "hired_count": 0, "shortage": 1, "target_start_date": "2025-08-01", "status": "Đang mở", "requested_by": "Giang", "notes": "Phong kham"}];
 const pMap=new Map(positions.map(p=>[p.position_id,p.position_name]));
 const bMap=new Map(branches.map(b=>[b.branch_id,b.branch_name]));
 const stageMap={};
@@ -154,22 +154,14 @@ document.getElementById('kpi').innerHTML=`
 <div class="card"><div class="label">Thời gian trung bình</div><div class="value">${avgDays}<span style="font-size:14px;color:var(--muted)"> ngày</span></div><div class="small">Trong pipeline</div></div>
 `;
 }
-function renderDemand(list){
+function renderDemand(){
 const tbody=document.querySelector('#demandTable tbody');
 const activeDemand=demandList.filter(d=>d.status==='Đang mở');
-const pipelineByBP= new Map();
-['Đã hẹn','PV1','PV2','Thử việc','Đã nhận việc'].forEach(s=> pipelineByBP.set(s, new Map()));
-list.forEach(c=>{if(pipelineByBP.has(c.stage)) pipelineByBP.get(c.stage).set(c.assigned_branch,(pipelineByBP.get(c.stage).get(c.assigned_branch)||0)+1)});
 let html='';
 activeDemand.forEach(d=>{
-const pipe= (pipelineByBP.get('Đã hẹn')?.get(d.branch_id)||0)+(pipelineByBP.get('PV1')?.get(d.branch_id)||0)+(pipelineByBP.get('PV2')?.get(d.branch_id)||0);
-const trial=(pipelineByBP.get('Thử việc')?.get(d.branch_id)||0);
-const offerCount=list.filter(c=>c.assigned_branch===d.branch_id && ['Đã nhận việc','Đã tuyển'].includes(c.stage)).length;
-const hiredCount=list.filter(c=>c.assigned_branch===d.branch_id && ['Đã nhận việc','Đã tuyển'].includes(c.stage)).length;
-const shortage = Math.max(0, d.open_headcount - (pipe + trial + offerCount + hiredCount));
 const priorityClass = d.priority==='Cao'?'p-high':d.priority==='Trung bình'?'p-medium':'p-low';
-html+=`<tr><td>${esc(bMap.get(d.branch_id)||d.branch_id)}</td><td>${esc(pMap.get(d.position_id)||d.position_id)}</td><td>${d.open_headcount}</td><td>${pipe}</td><td>${trial}</td><td>${offerCount}</td><td>${hiredCount}</td><td><span class="badge ${priorityClass}">${shortage}</span></td></tr>`});
-if(!html) html=`<tr><td colspan="8" class="empty">Không có nhu cầu đang mở.</td></tr>`;
+html+=`<tr><td>${esc(bMap.get(d.branch_id)||d.branch_id)}</td><td>${esc(pMap.get(d.position_id)||d.position_id)}</td><td>${d.open_headcount}</td><td><span class="badge ${priorityClass}">${esc(d.priority)}</span></td><td>${d.hired_count ?? 0}</td><td><span class="badge ${priorityClass}">${d.shortage ?? 0}</span></td></tr>`});
+if(!html) html=`<tr><td colspan="6" class="empty">Không có nhu cầu đang mở.</td></tr>`;
 tbody.innerHTML=html;
 }
 function renderFunnel(list){

@@ -277,6 +277,8 @@ def sync_demand() -> tuple[list[dict], list[str]]:
             continue
 
         open_headcount = int(re.sub(r'\D', '', row.get('Can_tuyen', '') or '0') or 0)
+        hired_count = int(re.sub(r'\D', '', row.get('Tuyen_thanh_cong', '') or '0') or 0)
+        shortage = int(re.sub(r'\D', '', row.get('Thieu', '') or '0') or 0)
         priority = PRIORITY_MAP.get(row.get('Do_uu_tien', '').upper().strip(), 'Trung bình')
         status = DEMAND_STATUS_MAP.get(row.get('Trang_thai', '').upper().strip(), 'Đang mở')
 
@@ -286,6 +288,8 @@ def sync_demand() -> tuple[list[dict], list[str]]:
             'position_id': row.get('Vi_tri', '').strip().upper(),
             'open_headcount': open_headcount,
             'priority': priority,
+            'hired_count': hired_count,
+            'shortage': shortage,
             'target_start_date': row.get('Ngay_bat_dau', '').strip(),
             'status': status,
             'requested_by': row.get('Nguoi_yeu_cau', '').strip(),

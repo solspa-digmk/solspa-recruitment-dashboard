@@ -80,7 +80,7 @@ a{color:var(--blue);font-weight:800}
 <div class="tablewrap">
 <table id="demandTable">
 <thead>
-<tr><th>Chi nhánh</th><th>Vị trí</th><th>Cần tuyển</th><th>Đang phỏng vấn</th><th>Thử việc</th><th>Đã nhận việc</th><th>Tuyển thành công</th><th>Thiếu</th></tr>
+<tr><th>Chi nhánh</th><th>Vị trí</th><th>Cần tuyển</th><th>Độ ưu tiên</th><th>Tuyển thành công</th><th>Thiếu</th></tr>
 </thead>
 <tbody></tbody>
 </table>
@@ -154,22 +154,14 @@ document.getElementById('kpi').innerHTML=`
 <div class="card"><div class="label">Thời gian trung bình</div><div class="value">${avgDays}<span style="font-size:14px;color:var(--muted)"> ngày</span></div><div class="small">Trong pipeline</div></div>
 `;
 }
-function renderDemand(list){
+function renderDemand(){
 const tbody=document.querySelector('#demandTable tbody');
 const activeDemand=demandList.filter(d=>d.status==='Đang mở');
-const pipelineByBP= new Map();
-['Đã hẹn','PV1','PV2','Thử việc','Đã nhận việc'].forEach(s=> pipelineByBP.set(s, new Map()));
-list.forEach(c=>{if(pipelineByBP.has(c.stage)) pipelineByBP.get(c.stage).set(c.assigned_branch,(pipelineByBP.get(c.stage).get(c.assigned_branch)||0)+1)});
 let html='';
 activeDemand.forEach(d=>{
-const pipe= (pipelineByBP.get('Đã hẹn')?.get(d.branch_id)||0)+(pipelineByBP.get('PV1')?.get(d.branch_id)||0)+(pipelineByBP.get('PV2')?.get(d.branch_id)||0);
-const trial=(pipelineByBP.get('Thử việc')?.get(d.branch_id)||0);
-const offerCount=list.filter(c=>c.assigned_branch===d.branch_id && ['Đã nhận việc','Đã tuyển'].includes(c.stage)).length;
-const hiredCount=list.filter(c=>c.assigned_branch===d.branch_id && ['Đã nhận việc','Đã tuyển'].includes(c.stage)).length;
-const shortage = Math.max(0, d.open_headcount - (pipe + trial + offerCount + hiredCount));
 const priorityClass = d.priority==='Cao'?'p-high':d.priority==='Trung bình'?'p-medium':'p-low';
-html+=`<tr><td>${esc(bMap.get(d.branch_id)||d.branch_id)}</td><td>${esc(pMap.get(d.position_id)||d.position_id)}</td><td>${d.open_headcount}</td><td>${pipe}</td><td>${trial}</td><td>${offerCount}</td><td>${hiredCount}</td><td><span class="badge ${priorityClass}">${shortage}</span></td></tr>`});
-if(!html) html=`<tr><td colspan="8" class="empty">Không có nhu cầu đang mở.</td></tr>`;
+html+=`<tr><td>${esc(bMap.get(d.branch_id)||d.branch_id)}</td><td>${esc(pMap.get(d.position_id)||d.position_id)}</td><td>${d.open_headcount}</td><td><span class="badge ${priorityClass}">${esc(d.priority)}</span></td><td>${d.hired_count ?? 0}</td><td><span class="badge ${priorityClass}">${d.shortage ?? 0}</span></td></tr>`});
+if(!html) html=`<tr><td colspan="6" class="empty">Không có nhu cầu đang mở.</td></tr>`;
 tbody.innerHTML=html;
 }
 function renderFunnel(list){

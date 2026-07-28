@@ -5,10 +5,12 @@
     "position_id": "QLCN",
     "open_headcount": 1,
     "priority": "Cao",
-    "target_start_date": "",
+    "hired_count": 0,
+    "shortage": 1,
+    "target_start_date": "2025-08-01",
     "status": "Đang mở",
     "requested_by": "Giang",
-    "notes": ""
+    "notes": "Can 1 QLCN"
   },
   {
     "demand_id": "D002",
@@ -16,10 +18,12 @@
     "position_id": "LT",
     "open_headcount": 1,
     "priority": "Cao",
-    "target_start_date": "",
+    "hired_count": 0,
+    "shortage": 1,
+    "target_start_date": "2025-08-01",
     "status": "Đang mở",
     "requested_by": "Giang",
-    "notes": ""
+    "notes": "Bo sung ca chieu"
   },
   {
     "demand_id": "D003",
@@ -27,10 +31,12 @@
     "position_id": "LT",
     "open_headcount": 1,
     "priority": "Cao",
-    "target_start_date": "",
+    "hired_count": 0,
+    "shortage": 1,
+    "target_start_date": "2025-08-01",
     "status": "Đang mở",
     "requested_by": "Giang",
-    "notes": ""
+    "notes": "Thay the QL"
   },
   {
     "demand_id": "D004",
@@ -38,21 +44,25 @@
     "position_id": "QLCN",
     "open_headcount": 1,
     "priority": "Cao",
-    "target_start_date": "",
+    "hired_count": 0,
+    "shortage": 1,
+    "target_start_date": "2025-08-01",
     "status": "Đang mở",
     "requested_by": "Giang",
-    "notes": ""
+    "notes": "Mua cao diem"
   },
   {
     "demand_id": "D005",
     "branch_id": "RNS",
     "position_id": "LT",
     "open_headcount": 1,
-    "priority": "Cao",
-    "target_start_date": "",
+    "priority": "Trung bình",
+    "hired_count": 0,
+    "shortage": 1,
+    "target_start_date": "2025-08-01",
     "status": "Đang mở",
     "requested_by": "Giang",
-    "notes": ""
+    "notes": "Resort"
   },
   {
     "demand_id": "D006",
@@ -60,9 +70,11 @@
     "position_id": "LT",
     "open_headcount": 1,
     "priority": "Cao",
-    "target_start_date": "",
+    "hired_count": 0,
+    "shortage": 1,
+    "target_start_date": "2025-08-01",
     "status": "Đang mở",
     "requested_by": "Giang",
-    "notes": ""
+    "notes": "Phong kham"
   }
 ]
