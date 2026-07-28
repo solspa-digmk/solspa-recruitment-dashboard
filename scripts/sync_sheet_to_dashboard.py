@@ -236,7 +236,7 @@ def sync() -> tuple[list[dict], list[dict], str]:
 
     for row in raw_rows:
         cid = (row.get('ID') or next_id()).strip()
-        if cid in seen_ids:
+        if not cid:
             continue
 
         try:
@@ -255,9 +255,16 @@ def sync() -> tuple[list[dict], list[dict], str]:
             errors.append({'row': row, 'errors': dups})
             continue
 
-        candidates.append(candidate)
-        appended.append(candidate)
-        seen_ids.add(candidate['candidate_id'])
+        # Update if exists, append if new
+        existing_idx = next((i for i, c in enumerate(candidates) if c.get('candidate_id') == cid), None)
+        if existing_idx is not None:
+            candidates[existing_idx] = candidate
+            appended.append(candidate)
+            print(f'UPDATE {cid} - {candidate["full_name"]}')
+        else:
+            candidates.append(candidate)
+            appended.append(candidate)
+            seen_ids.add(cid)
 
     CANDIDATES_FILE.write_text(json.dumps(candidates, ensure_ascii=False, indent=2), encoding='utf-8')
 
