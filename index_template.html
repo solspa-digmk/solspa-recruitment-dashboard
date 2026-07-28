@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SOL SPA - Dashboard Tuyển Dụng</title>
+<style>
+:root{--bg:#f7fbff;--panel:#fff;--text:#0f172a;--muted:#475569;--line:#dbe7f5;--blue:#0047ab;--yellow:#f59e0b;--green:#1b7a4d;--red:#c62828}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;background:linear-gradient(180deg,#eef6ff,#fff);color:var(--text)}
+.app{max-width:1200px;margin:0 auto;padding:18px 14px}
+.hero{border-left:7px solid var(--blue);padding:8px 0 8px 14px;margin:0 0 14px}
+.hero h1{margin:0;color:var(--blue);font-size:clamp(22px,6vw,32px);font-weight:900;letter-spacing:-.03em}
+.hero p{margin:6px 0 0;color:var(--muted);font-weight:600}
+.filters{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:18px;padding:12px;position:sticky;top:0;z-index:5;box-shadow:0 10px 24px rgba(0,71,171,.08)}
+@media (min-width:720px){.filters{grid-template-columns:repeat(4,1fr)}}
+select{width:100%;min-height:48px;border:1px solid #bdd4ef;border-radius:13px;padding:12px 12px;font-size:16px;font-weight:750;background:#fff;color:var(--text);-webkit-appearance:none;appearance:none}
+.kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:14px 0}
+@media (min-width:720px){.kpis{grid-template-columns:repeat(auto-fit,minmax(160px,1fr))}}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:14px;box-shadow:0 10px 24px rgba(0,71,171,.08);min-width:0}
+.label{font-size:12px;text-transform:uppercase;font-weight:900;color:var(--blue);letter-spacing:.04em}
+.value{margin-top:5px;font-size:clamp(22px,5vw,30px);font-weight:900;color:#0f172a;letter-spacing:-.03em}
+.section{margin-top:16px}
+.section-title{margin:0 0 10px;font-size:17px;color:var(--blue);font-weight:900}
+.grid{display:grid;gap:12px}
+.grid-2{display:grid;grid-template-columns:1fr;gap:12px}
+@media (min-width:960px){.grid-2{grid-template-columns:repeat(2,1fr)}}
+.tablewrap{overflow:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:16px;background:#fff;box-shadow:0 10px 24px rgba(0,71,171,.06);overscroll-behavior:contain}
+table{width:100%;border-collapse:collapse;font-size:15px;min-width:820px;color:#1e293b}
+.stage-block .name{font-size:12px;text-transform:uppercase;font-weight:900;color:var(--blue);letter-spacing:.04em;margin-bottom:4px}
+.stage-block .count{font-size:clamp(22px,6vw,36px);font-weight:950;color:var(--blue);letter-spacing:-.04em;margin-top:5px}
+.stage-blocks{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:10px}
+.stage-block{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px;text-align:center;box-shadow:0 10px 24px rgba(0,71,171,.08)}
+.tablewrap{overflow:auto;border:1px solid var(--line);border-radius:16px;background:#fff;box-shadow:0 10px 24px rgba(0,71,171,.06)}
+table{width:100%;border-collapse:collapse;font-size:14px;min-width:820px;color:#1e293b}
+th{background:#dbeafe;color:#1e3a8a;padding:12px 10px;border-bottom:2px solid #bfdbfe;text-align:left;font-weight:900;text-transform:uppercase;font-size:12px;letter-spacing:.03em;white-space:nowrap}
+td{padding:10px;border-bottom:1px solid #e2e8f0;color:#1e293b;font-weight:600;vertical-align:middle}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:#f8fafc}
+.badge{display:inline-block;padding:5px 10px;border-radius:999px;font-size:12px;font-weight:800;border:1px solid transparent}
+.s-moi{background:#dbeafe;color:#1e3a8a;border-color:#bfdbfe}
+.s-sang-loc{background:#eef2ff;color:#3730a3;border-color:#c7d2fe}
+.s-phan-chi-nhanh{background:#eef2ff;color:#3730a3;border-color:#c7d2fe}
+.s-da-lien-he{background:#e0f2fe;color:#075985;border-color:#bae6fd}
+.s-da-hen{background:#fef3c7;color:#92400e;border-color:#fde68a}
+.s-pv1{background:#fef3c7;color:#92400e;border-color:#fde68a}
+.s-pv2{background:#ffedd5;color:#9a3412;border-color:#fed7aa}
+.s-thu-viec{background:#ffedd5;color:#9a3412;border-color:#fed7aa}
+.s-de-xuat{background:#eef2ff;color:#3730a3;border-color:#c7d2fe}
+.s-da-tuyen{background:#d1fae5;color:#065f46;border-color:#a7f3d0}
+.s-da-nhan-viec{background:#d1fae5;color:#065f46;border-color:#a7f3d0}
+.s-tu-choi{background:#fee2e2;color:#7f1d1d;border-color:#fecaca}
+.s-nhom-tiem-nang{background:#f3f4f6;color:#374151;border-color:#d1d5db}
+.s-danh-sach-den{background:#f3f4f6;color:#374151;border-color:#d1d5db}
+.p-high{background:#ffe7e7;color:#7a2222;border-color:#ffcaca}
+.p-medium{background:#fff4d6;color:#6b4f00;border-color:#ffe2a8}
+.p-low{background:#e6f5ec;color:#1b5e34;border-color:#c2ebd5}
+.empty{color:var(--muted);font-size:13px;padding:14px}
+a{color:var(--blue);font-weight:800}
+.small{font-size:13px;color:var(--muted);font-weight:700}
+</style>
+</head>
+<body>
+<div class="app">
+<section class="hero">
+<h1>Dashboard Tuyển Dụng</h1>
+<p>Quản lý pipeline ứng viên, theo dõi nhu cầu và tình hình tuyển dụng các chi nhánh.</p>
+</section>
+<section class="filters">
+<select id="filterPosition"><option value="">Tất cả vị trí</option></select>
+<select id="filterBranch"><option value="">Tất cả chi nhánh</option></select>
+<select id="filterStage"><option value="">Tất cả trạng thái</option></select>
+<select id="filterSource"><option value="">Tất cả nguồn</option></select>
+</section>
+<section class="kpis" id="kpi"></section>
+<section class="section">
+<div class="grid grid-2">
+<div class="card">
+<div class="section-title">Nhu cầu tuyển theo chi nhánh</div>
+<div class="tablewrap">
+<table id="demandTable">
+<thead>
+<tr><th>Chi nhánh</th><th>Vị trí</th><th>Cần tuyển</th><th>Đang phỏng vấn</th><th>Thử việc</th><th>Đã nhận việc</th><th>Tuyển thành công</th><th>Thiếu</th></tr>
+</thead>
+<tbody></tbody>
+</table>
+</div>
+</div>
+<div class="card">
+<div class="section-title">Phần phễu</div>
+<div id="stageBlocks"></div>
+</div>
+</div>
+</section>
+<section class="section">
+<div class="section-title">Danh sách ứng viên</div>
+<div class="tablewrap">
+<table id="candidateTable">
+<thead>
+<tr><th>Họ tên</th><th>SĐT</th><th>Email</th><th>Vị trí</th><th>Chi nhánh</th><th>Nguồn</th><th>Trạng thái</th><th>Điểm</th><th>Người phụ trách</th><th>Cập nhật</th><th>Hành động tiếp</th></tr>
+</thead>
+<tbody></tbody>
+</table>
+</div>
+</section>
+<script>
+function esc(s){return String(s??'').replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]))}
+const branches=__BRANCHES__;
+const positions=__POSITIONS__;
+const stages=__STAGES__;
+const candidates=__CANDIDATES__;
+const demandList=__DEMAND__;
+const pMap=new Map(positions.map(p=>[p.position_id,p.position_name]));
+const bMap=new Map(branches.map(b=>[b.branch_id,b.branch_name]));
+const stageMap={};
+stageMap['Mới']='s-moi';
+stageMap['Sàng lọc']='s-sang-loc';
+stageMap['Phân chi nhánh']='s-phan-chi-nhanh';
+stageMap['Đã liên hệ']='s-da-lien-he';
+stageMap['Đã hẹn']='s-da-hen';
+stageMap['PV1']='s-pv1';
+stageMap['PV2']='s-pv2';
+stageMap['Thử việc']='s-thu-viec';
+stageMap['Từ chối']='s-tu-choi';
+stageMap['Đã nhận việc']='s-da-nhan-viec';
+stageMap['Nhóm tiềm năng']='s-nhom-tiem-nang';
+stageMap['Danh sách đen']='s-danh-sach-den';
+const funnelColors=['#0047ab','#1d4ed8','#2563eb','#3b82f6','#60a5fa','#93c5fd','#f59e0b','#fbbf24'];
+const funnelColorKeys=['Mới','Sàng lọc','Phân chi nhánh','Đã liên hệ','Đã hẹn','PV1','PV2','Thử việc','Từ chối','Đã nhận việc','Nhóm tiềm năng'];
+const funnelColorMap={};
+funnelColorKeys.forEach((k,i)=>funnelColorMap[k]=funnelColors[i%funnelColors.length]);
+function initFilters(){
+const fp=document.getElementById('filterPosition');
+positions.forEach(p=>{const o=document.createElement('option');o.value=p.position_id;o.textContent=p.position_name;fp.appendChild(o)});
+const fb=document.getElementById('filterBranch');
+branches.forEach(b=>{const o=document.createElement('option');o.value=b.branch_id;o.textContent=b.branch_name;fb.appendChild(o)});
+const fs=document.getElementById('filterStage');
+stages.forEach(s=>{const o=document.createElement('option');o.value=s;o.textContent=s;fs.appendChild(o)});
+const fsrc=document.getElementById('filterSource');
+['Giới thiệu','Trang tuyển dụng','LinkedIn','Email','Trực tiếp','Khác'].forEach(s=>{const o=document.createElement('option');o.value=s;o.textContent=s;fsrc.appendChild(o)});
+}
+function fillKPI(list){
+const total=list.length;
+const newToday=list.filter(c=>c.created_at==='__TODAY__').length;
+const interview=list.filter(c=>['Đã hẹn','PV1','PV2'].includes(c.stage)).length;
+const offer=list.filter(c=>c.stage==='Đã nhận việc').length;
+const hired=list.filter(c=>['Đã nhận việc','Đã tuyển'].includes(c.stage)).length;
+const avgDays= total ? Math.round((new Date() - new Date(list[0].created_at))/86400000/total) : 0;
+document.getElementById('kpi').innerHTML=`
+<div class="card"><div class="label">Tổng ứng viên</div><div class="value">${total}</div><div class="small">Ứng viên mới hôm nay: ${newToday}</div></div>
+<div class="card"><div class="label">Đang phỏng vấn</div><div class="value">${interview}</div><div class="small">Phỏng vấn vòng 1 + vòng 2</div></div>
+<div class="card"><div class="label">Đã nhận việc</div><div class="value">${offer}</div><div class="small">Ứng viên đã nhận việc</div></div>
+<div class="card"><div class="label">Tuyển thành công</div><div class="value">${hired}</div><div class="small">Đã nhận việc</div></div>
+<div class="card"><div class="label">Thời gian trung bình</div><div class="value">${avgDays}<span style="font-size:14px;color:var(--muted)"> ngày</span></div><div class="small">Trong pipeline</div></div>
+`;
+}
+function renderDemand(list){
+const tbody=document.querySelector('#demandTable tbody');
+const activeDemand=demandList.filter(d=>d.status==='Đang mở');
+const pipelineByBP= new Map();
+['Đã hẹn','PV1','PV2','Thử việc','Đã nhận việc'].forEach(s=> pipelineByBP.set(s, new Map()));
+list.forEach(c=>{if(pipelineByBP.has(c.stage)) pipelineByBP.get(c.stage).set(c.assigned_branch,(pipelineByBP.get(c.stage).get(c.assigned_branch)||0)+1)});
+let html='';
+activeDemand.forEach(d=>{
+const pipe= (pipelineByBP.get('Đã hẹn')?.get(d.branch_id)||0)+(pipelineByBP.get('PV1')?.get(d.branch_id)||0)+(pipelineByBP.get('PV2')?.get(d.branch_id)||0);
+const trial=(pipelineByBP.get('Thử việc')?.get(d.branch_id)||0);
+const offerCount=list.filter(c=>c.assigned_branch===d.branch_id && ['Đã nhận việc','Đã tuyển'].includes(c.stage)).length;
+const hiredCount=list.filter(c=>c.assigned_branch===d.branch_id && ['Đã nhận việc','Đã tuyển'].includes(c.stage)).length;
+const shortage = Math.max(0, d.open_headcount - (pipe + trial + offerCount + hiredCount));
+const priorityClass = d.priority==='Cao'?'p-high':d.priority==='Trung bình'?'p-medium':'p-low';
+html+=`<tr><td>${esc(bMap.get(d.branch_id)||d.branch_id)}</td><td>${esc(pMap.get(d.position_id)||d.position_id)}</td><td>${d.open_headcount}</td><td>${pipe}</td><td>${trial}</td><td>${offerCount}</td><td>${hiredCount}</td><td><span class="badge ${priorityClass}">${shortage}</span></td></tr>`});
+if(!html) html=`<tr><td colspan="8" class="empty">Không có nhu cầu đang mở.</td></tr>`;
+tbody.innerHTML=html;
+}
+function renderFunnel(list){
+const ordered=stages.filter(s=>!['Danh sách đen'].includes(s));
+const count=new Map(); ordered.forEach(s=>count.set(s,0));
+list.forEach(c=>{if(count.has(c.stage)) count.set(c.stage, count.get(c.stage)+1)});
+const container=document.getElementById('stageBlocks'); container.innerHTML='';
+ordered.forEach((s,i)=>{
+const v=count.get(s)||0;
+if(!v) return;
+const block=document.createElement('div');
+block.className='stage-block';
+block.innerHTML=`<div class="name">${esc(s)}</div><div class="count">${v}</div>`;
+container.appendChild(block);
+});
+if(!container.children.length) container.innerHTML='<div class="empty">Chưa có dữ liệu trạng thái.</div>';
+}
+function renderTable(list){
+const tbody=document.querySelector('#candidateTable tbody');
+const rows=list.map(c=>{
+const cls = stageMap[c.stage] || 's-sang-loc';
+const score =(c.screening_score||0)+(c.interview_score||0)+(c.trial_score||0)+(c.final_score||0);
+return `<tr>
+<td><a href="${esc(c.cv_link||'')}" target="_blank">${esc(c.full_name)}</a></td>
+<td><a href="tel:${esc(c.phone)}" style="font-weight:900;color:#0f172a;text-decoration:none">${esc(c.phone)}</a></td>
+<td><a href="mailto:${esc(c.email)}" style="font-weight:900;color:#0f172a;text-decoration:none">${esc(c.email)}</a></td>
+<td>${esc(pMap.get(c.position_applied)||c.position_applied)}</td>
+<td>${esc(bMap.get(c.assigned_branch)||c.assigned_branch)}</td>
+<td>${esc(c.source)}</td>
+<td><span class="badge ${cls}">${esc(c.stage)}</span></td>
+<td>${score}</td>
+<td>${esc(c.owner)}</td>
+<td>${esc(c.updated_at||c.created_at)}</td>
+<td>${esc(c.next_action||'')}</td>
+</tr>`}).join('');
+tbody.innerHTML=rows||`<tr><td colspan="11" class="empty">Không có ứng viên phù hợp.</td></tr>`;
+}
+function currentList(){
+const pos=document.getElementById('filterPosition').value;
+const branch=document.getElementById('filterBranch').value;
+const stage=document.getElementById('filterStage').value;
+const source=document.getElementById('filterSource').value;
+return candidates.filter(c=>(!pos||c.position_applied===pos) && (!branch||c.assigned_branch===branch) && (!stage||c.stage===stage) && (!source||c.source===source));
+}
+function refresh(){
+const list=currentList();
+fillKPI(list);
+renderDemand(list);
+renderFunnel(list);
+renderTable(list);
+}
+initFilters();
+['filterPosition','filterBranch','filterStage','filterSource'].forEach(id=>document.getElementById(id).addEventListener('change',refresh));
+refresh();
+</script>
+</div>
+</body>
+</html>

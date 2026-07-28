@@ -1,0 +1,56 @@
+[
+  {
+    "branch_id": "Q7",
+    "branch_name": "Phòng khám Q7",
+    "branch_type": "Clinic",
+    "region": "HCM"
+  },
+  {
+    "branch_id": "LCP",
+    "branch_name": "LCP",
+    "branch_type": "Spa Branch",
+    "region": "HCM"
+  },
+  {
+    "branch_id": "LCR",
+    "branch_name": "LCR",
+    "branch_type": "Spa Branch",
+    "region": "HCM"
+  },
+  {
+    "branch_id": "RNS",
+    "branch_name": "RNS",
+    "branch_type": "Spa Branch",
+    "region": "HCM"
+  },
+  {
+    "branch_id": "MVT",
+    "branch_name": "Mercure VT",
+    "branch_type": "Hotel Spa",
+    "region": "Vũng Tàu"
+  },
+  {
+    "branch_id": "MBC",
+    "branch_name": "Minera Bình Châu",
+    "branch_type": "Resort Spa",
+    "region": "Bình Châu"
+  },
+  {
+    "branch_id": "LR",
+    "branch_name": "Lan Rừng",
+    "branch_type": "Resort/Hotel Spa",
+    "region": "Vũng Tàu"
+  },
+  {
+    "branch_id": "HM",
+    "branch_name": "Hoàn Mỹ",
+    "branch_type": "Partner/Clinic",
+    "region": "HCM"
+  },
+  {
+    "branch_id": "DL",
+    "branch_name": "Đà Lạt",
+    "branch_type": "Branch/Hotel Spa",
+    "region": "Đà Lạt"
+  }
+]

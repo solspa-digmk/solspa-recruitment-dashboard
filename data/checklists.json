@@ -1,0 +1,209 @@
+[
+  {
+    "position_id": "LT",
+    "criterion": "Ngoại hình / Tác phong",
+    "weight": 15,
+    "score_1": "Thiếu, chưa chuyên nghiệp",
+    "score_3": "Đạt yêu cầu",
+    "score_5": "Rất tốt, vượt chuẩn",
+    "notes": "Quan sát khi vào phòng, bắt tay, trang phục"
+  },
+  {
+    "position_id": "LT",
+    "criterion": "Giao tiếp / Lịch sự",
+    "weight": 20,
+    "score_1": "Nói nhỏ, lạnh lùng",
+    "score_3": "Trung bình, lễ phép",
+    "score_5": "Tự nhiên, thân thiện",
+    "notes": ""
+  },
+  {
+    "position_id": "LT",
+    "criterion": "Tiếng Anh giao tiếp",
+    "weight": 15,
+    "score_1": "Không đủ cơ bản",
+    "score_3": "Cơ bản - khá",
+    "score_5": "Khá - tốt",
+    "notes": "Chào hỏi, hướng dẫn dịch vụ cơ bản"
+  },
+  {
+    "position_id": "LT",
+    "criterion": "Booking / Cashier",
+    "weight": 20,
+    "score_1": "Chưa thành thạo",
+    "score_3": "Biết cơ bản",
+    "score_5": "Thành thạo phần mềm",
+    "notes": "Kiểm tra kỹ năng máy tính"
+  },
+  {
+    "position_id": "LT",
+    "criterion": "Upsell / Dịch vụ",
+    "weight": 15,
+    "score_1": "Không chủ động",
+    "score_3": "Biết giới thiệu",
+    "score_5": "Chủ động, có kỹ thuật",
+    "notes": "Mô tả tình huống upsell"
+  },
+  {
+    "position_id": "LT",
+    "criterion": "Chăm sóc khách hàng",
+    "weight": 15,
+    "score_1": "Thiếu kiên nhẫn",
+    "score_3": "Lắng nghe, đủ kiên nhẫn",
+    "score_5": "Chủ động, xử lý phàn nàn tốt",
+    "notes": ""
+  },
+  {
+    "position_id": "QLCN",
+    "criterion": "Quản lý ca / nhân sự",
+    "weight": 20,
+    "score_1": "Chưa rõ quy trình",
+    "score_3": "Biết cơ bản",
+    "score_5": "Vận hành mượt, có quy trình",
+    "notes": ""
+  },
+  {
+    "position_id": "QLCN",
+    "criterion": "Theo dõi KPI / doanh thu",
+    "weight": 20,
+    "score_1": "Không nắm rõ",
+    "score_3": "Nắm cơ bản",
+    "score_5": "Điều hành theo KPI tốt",
+    "notes": "Xem cách đọc báo cáo"
+  },
+  {
+    "position_id": "QLCN",
+    "criterion": "Xử lý khách hàng khó",
+    "weight": 20,
+    "score_1": "Chưa xử lý được",
+    "score_3": "Xử lý ổn",
+    "score_5": "Xử lý tốt, giữ khách",
+    "notes": ""
+  },
+  {
+    "position_id": "QLCN",
+    "criterion": "Training / Coaching",
+    "weight": 20,
+    "score_1": "Chưa có kinh nghiệm",
+    "score_3": "Có hướng dẫn cơ bản",
+    "score_5": "Đào tạo nhân viên hiệu quả",
+    "notes": ""
+  },
+  {
+    "position_id": "QLCN",
+    "criterion": "Phối hợp BGĐ",
+    "weight": 20,
+    "score_1": "Chưa nhịt",
+    "score_3": "Lắng nghe, thực hiện",
+    "score_5": "Chủ động báo cáo, đề xuất",
+    "notes": ""
+  },
+  {
+    "position_id": "PGD",
+    "criterion": "Tư duy chiến lược",
+    "weight": 25,
+    "score_1": "Chưa rõ mục tiêu",
+    "score_3": "Có tầm nhìn ổn",
+    "score_5": "Chiến lược rõ, đo lường được",
+    "notes": ""
+  },
+  {
+    "position_id": "PGD",
+    "criterion": "P&L / tài chính",
+    "weight": 25,
+    "score_1": "Không hiểu P&L",
+    "score_3": "Hiểu cơ bản",
+    "score_5": "Quản lý P&L, dự toán tốt",
+    "notes": ""
+  },
+  {
+    "position_id": "PGD",
+    "criterion": "Quản trị đa chi nhánh",
+    "weight": 25,
+    "score_1": "Chưa có",
+    "score_3": "Có kinh nghiệm 2+ chi nhánh",
+    "score_5": "Quản lý đa điểm hiệu quả",
+    "notes": ""
+  },
+  {
+    "position_id": "PGD",
+    "criterion": "Đạo đức / cam kết",
+    "weight": 25,
+    "score_1": "Thiếu bằng chứng",
+    "score_3": "Ổn định, có trách nhiệm",
+    "score_5": "Cam kết cao, minh bạch",
+    "notes": ""
+  },
+  {
+    "position_id": "BS",
+    "criterion": "Bằng cấp / chứng chỉ",
+    "weight": 30,
+    "score_1": "Thiếu bằng cấp",
+    "score_3": "Đủ điều kiện",
+    "score_5": "Bằng cấp tốt, chứng chỉ mở rộng",
+    "notes": "Yêu cầu kiểm tra giấy tờ"
+  },
+  {
+    "position_id": "BS",
+    "criterion": "Tư vấn liệu trình",
+    "weight": 30,
+    "score_1": "Chưa rõ quy trình",
+    "score_3": "Tư vấn đúng chuẩn",
+    "score_5": "Tư vấn xuất sắc, upsell phù hợp",
+    "notes": "Xem case mẫu"
+  },
+  {
+    "position_id": "BS",
+    "criterion": "An toàn khách hàng",
+    "weight": 25,
+    "score_1": "Chưa nhận biết rủi ro",
+    "score_3": "Nhận biết cơ bản",
+    "score_5": "Kiểm soát rủi ro tốt",
+    "notes": ""
+  },
+  {
+    "position_id": "BS",
+    "criterion": "Đạo đức nghề nghiệp",
+    "weight": 15,
+    "score_1": "Chưa rõ ràng",
+    "score_3": "Ổn định",
+    "score_5": "Minh bạch, có nguyên tắc",
+    "notes": ""
+  },
+  {
+    "position_id": "TLV",
+    "criterion": "Tay nghề",
+    "weight": 40,
+    "score_1": "Yếu, chưa đạt",
+    "score_3": "Đạt yêu cầu",
+    "score_5": "Vượt chuẩn, kỹ thuật tốt",
+    "notes": "Test thực hành 15-30 phút"
+  },
+  {
+    "position_id": "TLV",
+    "criterion": "Giao tiếp khách",
+    "weight": 20,
+    "score_1": "Không chủ động",
+    "score_3": "Lịch sự, đủ thông tin",
+    "score_5": "Chủ động, tạo cảm giác thoải mái",
+    "notes": ""
+  },
+  {
+    "position_id": "TLV",
+    "criterion": "Kỷ luật quy trình",
+    "weight": 20,
+    "score_1": "Vi phạm quy trình",
+    "score_3": "Tuân thủ tốt",
+    "score_5": "Tuân thủ tuyệt đối",
+    "notes": "Vệ sinh, Setup phòng"
+  },
+  {
+    "position_id": "TLV",
+    "criterion": "Upsell sản phẩm",
+    "weight": 20,
+    "score_1": "Không giới thiệu",
+    "score_3": "Giới thiệu cơ bản",
+    "score_5": "Chủ động, phù hợp nhu cầu",
+    "notes": ""
+  }
+]

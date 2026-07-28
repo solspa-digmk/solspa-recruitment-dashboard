@@ -1,0 +1,112 @@
+[
+  {
+    "activity_id": "A001",
+    "candidate_id": "C001",
+    "date": "2025-07-20",
+    "action_type": "Created",
+    "from_stage": "",
+    "to_stage": "New",
+    "owner": "HR LCP",
+    "notes": "Nhận CV từ TopCV",
+    "next_follow_up_date": "2025-07-21"
+  },
+  {
+    "activity_id": "A002",
+    "candidate_id": "C001",
+    "date": "2025-07-21",
+    "action_type": "Screen",
+    "from_stage": "New",
+    "to_stage": "Screening",
+    "owner": "HR LCP",
+    "notes": "CV đạt, chuẩn bị gọi",
+    "next_follow_up_date": "2025-07-22"
+  },
+  {
+    "activity_id": "A003",
+    "candidate_id": "C002",
+    "date": "2025-07-21",
+    "action_type": "Created",
+    "from_stage": "",
+    "to_stage": "New",
+    "owner": "HR LCR",
+    "notes": "Referral nội bộ",
+    "next_follow_up_date": "2025-07-22"
+  },
+  {
+    "activity_id": "A004",
+    "candidate_id": "C002",
+    "date": "2025-07-22",
+    "action_type": "Screen",
+    "from_stage": "New",
+    "to_stage": "Screening",
+    "owner": "HR LCR",
+    "notes": "CV khá, chuyển phỏng vấn",
+    "next_follow_up_date": "2025-07-23"
+  },
+  {
+    "activity_id": "A005",
+    "candidate_id": "C003",
+    "date": "2025-07-22",
+    "action_type": "Created",
+    "from_stage": "",
+    "to_stage": "New",
+    "owner": "HR MVT",
+    "notes": "Facebook group",
+    "next_follow_up_date": "2025-07-23"
+  },
+  {
+    "activity_id": "A006",
+    "candidate_id": "C003",
+    "date": "2025-07-23",
+    "action_type": "Screen",
+    "from_stage": "New",
+    "to_stage": "Screening",
+    "owner": "HR MVT",
+    "notes": "CV tạm, cần test tay nghề",
+    "next_follow_up_date": "2025-07-24"
+  },
+  {
+    "activity_id": "A007",
+    "candidate_id": "C004",
+    "date": "2025-07-23",
+    "action_type": "Created",
+    "from_stage": "",
+    "to_stage": "New",
+    "owner": "HR Q7",
+    "notes": "Email nhận CV",
+    "next_follow_up_date": "2025-07-24"
+  },
+  {
+    "activity_id": "A008",
+    "candidate_id": "C004",
+    "date": "2025-07-24",
+    "action_type": "Screen",
+    "from_stage": "New",
+    "to_stage": "Screening",
+    "owner": "HR Q7",
+    "notes": "CV tốt, có chứng chỉ",
+    "next_follow_up_date": "2025-07-25"
+  },
+  {
+    "activity_id": "A009",
+    "candidate_id": "C005",
+    "date": "2025-07-24",
+    "action_type": "Created",
+    "from_stage": "",
+    "to_stage": "New",
+    "owner": "HR RNS",
+    "notes": "Walk-in tại chi nhánh",
+    "next_follow_up_date": "2025-07-25"
+  },
+  {
+    "activity_id": "A010",
+    "candidate_id": "C005",
+    "date": "2025-07-25",
+    "action_type": "Contact",
+    "from_stage": "Screening",
+    "to_stage": "Contacted",
+    "owner": "HR RNS",
+    "notes": "Gọi lần 1, không nghe",
+    "next_follow_up_date": "2025-07-26"
+  }
+]

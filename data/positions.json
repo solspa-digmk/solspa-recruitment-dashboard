@@ -1,0 +1,27 @@
+[
+  {
+    "position_id": "PGD",
+    "position_name": "Phó Giám Đốc",
+    "level": "Executive"
+  },
+  {
+    "position_id": "QLCN",
+    "position_name": "Quản lý/Phó Quản lý chi nhánh",
+    "level": "Management"
+  },
+  {
+    "position_id": "LT",
+    "position_name": "Lễ tân",
+    "level": "Front Office"
+  },
+  {
+    "position_id": "BS",
+    "position_name": "Bác sĩ/Y sĩ",
+    "level": "Medical"
+  },
+  {
+    "position_id": "TLV",
+    "position_name": "Trị liệu viên",
+    "level": "Service"
+  }
+]
