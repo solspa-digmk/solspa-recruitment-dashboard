@@ -96,10 +96,11 @@ def normalize_source(v: str) -> str:
         'WALK-IN': 'Trực tiếp', 'TRỰC TIẾP': 'Trực tiếp',
         'LINKEDIN': 'LinkedIn',
         'EMAIL': 'Email',
-        'GIỚI THIỆU': 'Giới thiệu', 'GIỚI THIỆU': 'Giới thiệu', 'REFERRAL': 'Giới thiệu',
+        'GIỚI THIỆU': 'Giới thiệu', 'REFERRAL': 'Giới thiệu',
+        'HOTELJOB': 'Trang tuyển dụng',
         'KHÁC': 'Khác',
     }
-    return aliases.get(v.upper(), v)
+    return aliases.get(v.upper(), 'Khác')
 
 
 def next_id() -> str:
