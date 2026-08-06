@@ -44,7 +44,7 @@ BRANCHES = {'Q7', 'LCP', 'LCR', 'RNS', 'MVT', 'MBC', 'LR', 'HM', 'DL'}
 STAGES = {
     'Mới', 'Sàng lọc', 'Phân chi nhánh', 'Đã liên hệ', 'Đã hẹn',
     'PV1', 'PV2', 'Thử việc', 'Từ chối', 'Đã nhận việc',
-    'Nhóm tiềm năng', 'Danh sách đen'
+    'Nhóm tiềm năng', 'Danh sách đen', 'Không liên hệ được'
 }
 SOURCE_LABELS = {'Giới thiệu', 'Trang tuyển dụng', 'LinkedIn', 'Email', 'Trực tiếp', 'Khác'}
 
@@ -345,10 +345,11 @@ def sync() -> tuple[list[dict], list[dict], str]:
             errors.append({'row': row, 'errors': errs})
             continue
 
+        # Preserve every source row. Duplicate phone/email is warning only;
+        # source ID remains row identity and must stay visible in dashboard.
         dups = check_duplicate(candidate['phone'], candidate['email'], candidate['candidate_id'])
         if dups:
             errors.append({'row': row, 'errors': dups})
-            continue
 
         # Update if exists, append if new
         existing_idx = next((i for i, c in enumerate(candidates) if c.get('candidate_id') == cid), None)
