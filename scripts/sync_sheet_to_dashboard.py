@@ -273,6 +273,9 @@ def sync_demand() -> tuple[list[dict], list[str]]:
     seen_ids = {d.get('demand_id') for d in demand}
 
     for row in raw_rows:
+        # Formula-only blank rows (e.g. Thieu=0) are not demand records.
+        if not any(str(row.get(k, '')).strip() for k in ('ID', 'Chi_nhanh', 'Vi_tri')):
+            continue
         did = (row.get('ID') or next_demand_id(demand)).strip()
         if not did:
             continue
@@ -364,17 +367,9 @@ def sync() -> tuple[list[dict], list[dict], str]:
 
     CANDIDATES_FILE.write_text(json.dumps(candidates, ensure_ascii=False, indent=2), encoding='utf-8')
 
-    # Publish dashboard
-    import subprocess
-    result = subprocess.run(
-        ['python3', str(ROOT / 'scripts' / 'publish_recruitment_dashboard.py')],
-        capture_output=True,
-        text=True,
-        cwd=str(ROOT),
-    )
-    publish_output = result.stdout.strip() if result.returncode == 0 else result.stderr.strip()
-
-    return appended, errors, publish_output
+    # Publishing happens after demand sync in main(), so generated index.html
+    # contains both current candidates and current demand data.
+    return appended, errors, ''
 
 
 def main():
@@ -416,6 +411,14 @@ def main():
         print('Khong co thay doi nao can publish.')
         return
 
+    import subprocess
+    result = subprocess.run(
+        ['python3', str(ROOT / 'scripts' / 'publish_recruitment_dashboard.py')],
+        capture_output=True,
+        text=True,
+        cwd=str(ROOT),
+    )
+    publish_output = result.stdout.strip() if result.returncode == 0 else result.stderr.strip()
     print('\nPublish dashboard:')
     print(publish_output or 'NO_CHANGE')
 
