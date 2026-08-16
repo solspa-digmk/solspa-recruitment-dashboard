@@ -93,9 +93,18 @@ a{color:var(--blue);font-weight:800}
 </div>
 </section>
 <section class="section">
-<div class="section-title">Danh sách ứng viên</div>
+<div class="section-title">Ứng viên đang xử lý</div>
 <div class="tablewrap">
-<table id="candidateTable">
+<table id="activeCandidateTable">
+<thead>
+<tr><th>Họ tên</th><th>SĐT</th><th>Email</th><th>Vị trí</th><th>Chi nhánh</th><th>Nguồn</th><th>Trạng thái</th><th>Điểm</th><th>Người phụ trách</th><th>Cập nhật</th><th>Hành động tiếp</th></tr>
+</thead>
+<tbody></tbody>
+</table>
+</div>
+<div class="section-title" style="margin-top:16px">Ứng viên còn lại</div>
+<div class="tablewrap">
+<table id="remainingCandidateTable">
 <thead>
 <tr><th>Họ tên</th><th>SĐT</th><th>Email</th><th>Vị trí</th><th>Chi nhánh</th><th>Nguồn</th><th>Trạng thái</th><th>Điểm</th><th>Người phụ trách</th><th>Cập nhật</th><th>Hành động tiếp</th></tr>
 </thead>
@@ -177,8 +186,10 @@ container.appendChild(block);
 });
 if(!container.children.length) container.innerHTML='<div class="empty">Chưa có dữ liệu trạng thái.</div>';
 }
-function renderTable(list){
-const tbody=document.querySelector('#candidateTable tbody');
+const activeStages=new Set(['đã nhận việc','đã liên hệ','pv1','pv2','phân chi nhánh']);
+function normalizedStage(stage){return String(stage??'').trim().toLocaleLowerCase('vi-VN')}
+function renderTable(tableId,list){
+const tbody=document.querySelector(`#${tableId} tbody`);
 const rows=list.map(c=>{
 const cls = stageMap[c.stage] || 's-sang-loc';
 const score =(c.screening_score||0)+(c.interview_score||0)+(c.trial_score||0)+(c.final_score||0);
@@ -209,7 +220,8 @@ const list=currentList();
 fillKPI(list);
 renderDemand(list);
 renderFunnel(list);
-renderTable(list);
+renderTable('activeCandidateTable',list.filter(c=>activeStages.has(normalizedStage(c.stage))));
+renderTable('remainingCandidateTable',list.filter(c=>!activeStages.has(normalizedStage(c.stage))));
 }
 initFilters();
 ['filterPosition','filterBranch','filterStage','filterSource'].forEach(id=>document.getElementById(id).addEventListener('change',refresh));
