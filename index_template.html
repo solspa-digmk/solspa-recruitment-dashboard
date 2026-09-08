@@ -187,7 +187,7 @@ container.appendChild(block);
 if(!container.children.length) container.innerHTML='<div class="empty">Chưa có dữ liệu trạng thái.</div>';
 }
 const activeStages=new Set(['đã nhận việc','đã liên hệ','pv1','pv2','phân chi nhánh']);
-function normalizedStage(stage){return String(stage??'').trim().toLocaleLowerCase('vi-VN')}
+function normalizedStage(stage){return String(stage??'').normalize('NFC').trim().replace(/\s+/g,' ').toLocaleLowerCase('vi-VN')}
 function renderTable(tableId,list){
 const tbody=document.querySelector(`#${tableId} tbody`);
 const rows=list.map(c=>{
